@@ -5,10 +5,11 @@ module.exports = {
 
   mockTodos: [
     {
-      text: 'learn programming'
+      text: 'learn programming',
+      done: true
     },
     {
-      text: 'Learn differen paradigms'
+      text: 'Learn different paradigms'
     },
     {
       text: 'Create a todo app'
