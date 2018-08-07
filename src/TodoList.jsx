@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { mockTodos } from './MockTodos';
 import Todo from './Todo';
-import Add from './Add';
 
 class TodoList extends Component {
   constructor(props) {
@@ -12,7 +11,7 @@ class TodoList extends Component {
 
     this.onClickDone = this.onClickDone.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
-    this.onCreate = this.onCreate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   createTodo({ text, done = false }) {
@@ -51,18 +50,17 @@ class TodoList extends Component {
     this.onClick(todoIndex);
   }
 
-  onCreate({ target }) {
+  handleSubmit(value) {
     this.setState({
-      todos: [...this.state.todos, { text: target.value }]
+      todos: [...this.state.todos, { text: value }]
     });
-    target.value = '';
   }
 
   render() {
-    const { todos, modalOpen } = this.state;
+    const { todos } = this.state;
     const onClickDone = this.onClickDone;
     const onClickDelete = this.onClickDelete;
-    const onCreate = this.onCreate;
+    const handleSubmit = this.handleSubmit;
 
     return (
       <div className="TodoList" className="section container">
@@ -77,7 +75,7 @@ class TodoList extends Component {
             }}
           />
         ))}
-        <Todo onCreate={onCreate} />
+        <Todo handleSubmit={handleSubmit} />
       </div>
     );
   }
