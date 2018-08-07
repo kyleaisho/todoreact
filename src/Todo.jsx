@@ -1,10 +1,6 @@
 import React from 'react';
 
-const getTextDiv = (text, done) => (
-  <div className="column is-three-quarters content">
-    <h4 className={done ? 'strikethrough' : 'regular'}>{text}</h4>
-  </div>
-);
+const getTextDiv = (text, done) => <h4 className={done ? 'strikethrough' : 'regular'}>{text}</h4>;
 
 const Todo = ({ text, onClickDone, onClickDelete, onCreate, done = false }) => (
   <div className="columns is-small">
@@ -13,7 +9,9 @@ const Todo = ({ text, onClickDone, onClickDelete, onCreate, done = false }) => (
         <i className="fas fa-check-square" />
       </span>
     </div>
-    {text ? getTextDiv(text, done) : <input placeholder="Add a task" onBlur={onCreate} type="text" />}
+    <div className="column is-three-quarters content">
+      {text ? getTextDiv(text, done) : <input placeholder="Add a task" onBlur={onCreate} type="text" />}
+    </div>
     <div className="column">
       <a className="delete" onClick={onClickDelete} />
     </div>

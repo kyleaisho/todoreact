@@ -51,10 +51,11 @@ class TodoList extends Component {
     this.onClick(todoIndex);
   }
 
-  onCreate(text) {
+  onCreate({ target }) {
     this.setState({
-      todos: [...this.state.todos, { text }]
+      todos: [...this.state.todos, { text: target.value }]
     });
+    target.value = '';
   }
 
   render() {
@@ -77,7 +78,6 @@ class TodoList extends Component {
           />
         ))}
         <Todo onCreate={onCreate} />
-        <Add />
       </div>
     );
   }
